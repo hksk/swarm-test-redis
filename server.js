@@ -2,6 +2,7 @@
 
 var http = require("http");
 var redis_server = "redis"
+var os = require("os");
 if(process.env.REDIS_SERVER){
   redis_server = process.env.REDIS_SERVER
 }
@@ -24,6 +25,7 @@ var server = http.createServer(function (request, response) {
     response.write("This page was generated after talking to redis.\n\n" +
                    "Application Build: 1" + "\n\n" + 
                    "Total requests: " + total_requests + "\n\n" +
+                   "Hostname/IP: " + os.hostname() +  "\n\n" +
                    "IP count: \n");
     Object.keys(reply).forEach(function (ip) {
       response.write("    " + ip + ": " + reply[ip] + "\n");
