@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . /usr/src/app
 
-ENV REDIS-CONTAINER redis
+ENV REDIS_SERVER redis
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
